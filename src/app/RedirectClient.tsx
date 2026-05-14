@@ -41,6 +41,12 @@ export default function RedirectClient({ destinationUrl, entry }: RedirectClient
       page_title: document.title,
     });
 
+    window.gtag?.("event", "redirect_start", {
+      event_category: "redirect",
+      entry,
+      destination_host: new URL(url).hostname,
+    });
+
     const body = JSON.stringify(payload);
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/api/page-view", new Blob([body], { type: "application/json" }));
