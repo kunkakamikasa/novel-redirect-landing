@@ -64,13 +64,13 @@ export default function RedirectClient({ destinationUrl, entry }: RedirectClient
   }, [destinationUrl, entry]);
 
   return (
-    <main className="redirect-shell" aria-label="跳转承接页">
+    <main className="redirect-shell" aria-label="Novel redirect page">
       <section className="card">
         <span className="badge">Novel App</span>
-        <h1>{missingConfig ? "跳转配置缺失" : "正在进入阅读页面"}</h1>
-        <p>{missingConfig ? "请先配置 DESTINATION_URL 后再投放该链接。" : "正在为你打开目标页面，请稍候。"}</p>
+        <h1>{missingConfig ? "Redirect not configured" : "Opening your story"}</h1>
+        <p>{missingConfig ? "The destination link is not ready yet." : "Please wait a moment while we take you to the reading page."}</p>
         {missingConfig ? null : <div className="loader" aria-hidden="true" />}
-        {destinationUrl ? <a className="fallback" href={destinationUrl}>如果没有自动跳转，点这里继续</a> : null}
+        {destinationUrl ? <a className="fallback" href={destinationUrl}>Continue</a> : null}
       </section>
     </main>
   );
